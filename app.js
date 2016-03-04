@@ -10,6 +10,7 @@ var passport = require('passport');
 global.pool = require('./config/dbpool');
 
 var app = express();
+app.set('env', 'development');
 
 var main = require('./routes/index');
 var products = require('./routes/products');
@@ -52,7 +53,7 @@ if (app.get('env') === 'development') {
     res.status(err.status || 500);
     res.json({
       message: err.message,
-      error: err
+      status: err.status
     });
   });
 }
