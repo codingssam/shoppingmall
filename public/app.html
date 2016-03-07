@@ -5,22 +5,41 @@
     <title>쇼핑몰</title>
     <link href="angularjs/bootstrap.css" rel="stylesheet"/>
     <link href="angularjs/bootstrap-theme.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="angularjs/angular.js"></script>
     <script>
-        angular.module('shoppingMall', ['customFilters']);
+        angular.module('shoppingMall', ['customFilters', 'cart', 'ngRoute'])
+                .config(function($routeProvider) {
+                    $routeProvider.when('/placeorder', {
+                        templateUrl: "angularjs/views/placeorder.html"
+                    });
+                    $routeProvider.when('/checkout', {
+                        templateUrl: "angularjs/views/checkoutsummary.html"
+                    });
+                    $routeProvider.when('/products', {
+                        templateUrl: "angularjs/views/productlist.html"
+                    });
+                    $routeProvider.otherwise({
+                        templateUrl: "angularjs/views/productlist.html"
+                    });
+                });
     </script>
     <script src="angularjs/controllers/shoppingmall.js"></script>
     <script src="angularjs/filters/customfilters.js"></script>
     <script src="angularjs/controllers/productlist.js"></script>
+    <script src="angularjs/components/cart/cart.js"></script>
+    <script src="angularjs/ngmodules/angular-route.js"></script>
+    <script src="angularjs/controllers/checkoutsummary.js"></script>
 </head>
 <body ng-controller="shoppingMallController">
     <div class="navbar navbar-inverse">
         <a class="navbar-brand" href="#">디딤돌 쇼핑몰</a>
+        <cart-summary />
     </div>
     <div class="alert alert-danger" ng-show="data.error">
         오류 ({{data.error.status}}) 발생. 상품 데이터를 로딩할 수 없습니다.
         <a href="app.html" class="alert-link">다시 시도해 주세요.</a>
     </div>
-    <ng-include src="'angularjs/views/productlist.html'"></ng-include>
+    <ng-view />
 </body>
 </html>

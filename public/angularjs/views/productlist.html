@@ -17,6 +17,9 @@
                         {{item.price | currency: "&#x20A9": 0}}
                     </span>
             </h3>
+            <a class="btn btn-success pull-right" ng-click="addToCart(item)">
+                <i class="fa fa-cart-plus"></i> 장바구니 담기
+            </a>
             <span class="lead">{{item.description}}</span>
         </div>
         <div class="pull-right btn-group">

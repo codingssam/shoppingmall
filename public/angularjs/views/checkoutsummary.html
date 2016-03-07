@@ -1,0 +1,12 @@
+<div ng-controller="checkoutSummaryController">
+    <div class="alert alert-warning" ng-show="cartData.length === 0">
+        장바구니가 비어있습니다.
+    </div>
+    <div ng-hide="cartData.length === 0">
+        장바구니 내용
+    </div>
+    <div>
+        <a class="btn btn-primary" href="#/products">계속 쇼핑하기</a>
+        <a class="btn btn-primary" href="#/placeorder">주문하기</a>
+    </div>
+</div>
