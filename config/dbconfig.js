@@ -4,7 +4,7 @@ var config = {
     "user": process.env.FMS_DB_USERNAME,
     "password": process.env.FMS_DB_PASSWORD,
     "database": process.env.FMS_DB,
-	"ssl": "Amazon RDS",
+	  "ssl": "Amazon RDS",
     "debug": true
 }
 

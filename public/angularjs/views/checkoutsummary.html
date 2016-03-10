@@ -1,12 +1,43 @@
 <div ng-controller="checkoutSummaryController">
     <div class="alert alert-warning" ng-show="cartData.length === 0">
-        장바구니가 비어있습니다.
+        장바구니가 비어있습니다. 쇼핑을 계속하시려면
+        <a class="btn btn-primary" href="#/products">계속 쇼핑하기</a>
+        를 눌러주세요.
     </div>
     <div ng-hide="cartData.length === 0">
-        장바구니 내용
-    </div>
-    <div>
-        <a class="btn btn-primary" href="#/products">계속 쇼핑하기</a>
-        <a class="btn btn-primary" href="#/placeorder">주문하기</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-left">상품</th>
+                    <th class="text-right">단가</th>
+                    <th class="text-center">수량</th>
+                    <th class="text-right">가격</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in cartData">
+                    <td class="text-left">{{item.name}}</td>
+                    <td class="text-right">{{item.price | currency:"&#x20A9":0}}</td>
+                    <td class="text-center">{{item.count}}</td>
+                    <td class="text-right">{{item.price * item.count | currency:"&#x20A9":0}}</td>
+                    <td class="text-center">
+                        <a ng-click="remove(item.id)" class="btn btn-warning btn-sm">
+                          삭제
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td class="text-center">합계: </td>
+                    <td class="text-right">{{totalPrice() | currency:"&#x20A9":0}}</td>
+                </tr>
+            </tfoot>
+        </table>
+        <div>
+            <a class="btn btn-primary" href="#/products">계속 쇼핑하기</a>
+            <a class="btn btn-primary" href="#/placeorder">주문하기</a>
+        </div>
     </div>
 </div>
