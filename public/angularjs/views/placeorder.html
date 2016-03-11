@@ -1,0 +1,36 @@
+<style>
+    span.error {
+        color: red;
+        font-weight: bold;
+    }
+    .ng-valid {
+        background-color: lightgreen;
+    }
+    .ng-invalid {
+        background-color: lightpink;
+    }
+</style>
+<h2>주문하기</h2>
+<p>주문을 위한 정보를 상세히 기입해주시기 바랍니다.</p>
+<form name="shippingForm" novalidate>
+    <div class="well">
+        <h3>받는 사람</h3>
+        <div class="form-group">
+            <label>이름</label>
+            <input name="name" class="form-control" ng-model="data.shipping.name" required/>
+            <span class="error" ng-show="shippingForm.name.$error.required">이름은 필수 입력 사항입니다.</span>
+        </div>
+        <h3>받는 곳</h3>
+        <div class="form-group">
+            <label>주소</label>
+            <input name="address" class="form-control" ng-model="data.shipping.address" required/>
+            <span class="error" ng-show="shippingForm.address.$error.required">주소는 필수 입력 사항입니다.</span>
+        </div>
+        <div class="text-center">
+            <a class="btn btn-primary" ng-disabled="shippingForm.$invalid"
+               ng-click="sendOrder(data.shipping)">
+                주문 완료
+            </a>
+        </div>
+    </div>
+</form>
