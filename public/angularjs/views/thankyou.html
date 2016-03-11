@@ -1,0 +1,9 @@
+<div ng-show="data.orderError">
+    에러({{data.orderError.status}})가 발생해 주문이 되지 않았습니다.<br/>
+    다시 주문을 하시려면 <a href="#/placeorder">여기</a>를 눌러주세요.
+</div>
+<div ng-hide="data.orderError">
+    <h2>감사합니다.</h2>
+    주문해 주셔서 감사합니다. 최대한 빨리 주문하신 상품을 배송하겠습니다.
+    주문하신 내역이나 주문을 추적하실 경우 주문번호: {{data.orderId}}를 참조하시기 바랍니다.
+</div>

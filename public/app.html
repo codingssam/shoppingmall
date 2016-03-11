@@ -10,6 +10,9 @@
     <script>
         angular.module('shoppingMall', ['customFilters', 'cart', 'ngRoute'])
                 .config(function($routeProvider) {
+                    $routeProvider.when('/complete', {
+                        templateUrl: "angularjs/views/thankyou.html"
+                    });
                     $routeProvider.when('/placeorder', {
                         templateUrl: "angularjs/views/placeorder.html"
                     });
