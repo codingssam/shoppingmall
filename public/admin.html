@@ -8,21 +8,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <script src="angularjs/angular.js"></script>
     <script>
-        angular.module('shoppingMallAdmin', ['ngRoute'])
-                .config(function($routeProvider) {
-                    $routeProvider.when('/login', {
-                        templateUrl: "angularjs/views/adminlogin.html"
-                    });
-                    $routeProvider.when('/main', {
-                        templateUrl: "angularjs/views/adminmain.html"
-                    });
-                    $routeProvider.otherwise({
-                        redirectTo: "/login"
-                    });
+        angular.module('shoppingMallAdmin', ['ngRoute', 'ngResource'])
+            .config(function($routeProvider) {
+                $routeProvider.when('/login', {
+                    templateUrl: "angularjs/views/adminlogin.html"
                 });
+                $routeProvider.when('/main', {
+                    templateUrl: "angularjs/views/adminmain.html"
+                });
+                $routeProvider.otherwise({
+                    redirectTo: "/login"
+                });
+            });
     </script>
     <script src="angularjs/controllers/admincontroller.js"></script>
     <script src="angularjs/ngmodules/angular-route.js"></script>
+    <script src="angularjs/ngmodules/angular-resource.js"></script>
 </head>
 <body>
     <ng-view />

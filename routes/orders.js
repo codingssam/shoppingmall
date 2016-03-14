@@ -2,7 +2,37 @@ var express = require('express');
 var router = express.Router();
 var async = require('async');
 
-router.post('/', function(req, res, next) {
+router.route('/')
+	.get(function(req, res, next) {
+		var order = [
+			{
+				"id": 1, "name": "김나희", "address": "서울시", "giftwrap": true,
+				"products": [
+					{"id": 1, "name": "코카콜라", "price": 2000, "count": 5},
+					{"id": 2, "name": "뚜러펑", "price": 4500, "count": 1},
+					{"id": 3, "name": "오대쌀10kg", "price": 27000, "count": 1}
+				]
+			},
+			{
+				"id": 2, "name": "송병훈", "address": "춘천시", "giftwrap": false,
+				"products": [
+					{"id": 1, "name": "코카콜라", "price": 2000, "count": 2},
+					{"id": 4, "name": "백산수1박스", "price": 8000, "count": 2},
+					{"id": 5, "name": "스페셜K고구마", "price": 5500, "count": 2}
+				]
+			},
+			{
+				"id": 3, "name": "박해범", "address": "용인시", "giftwrap": false,
+				"products": [
+					{"id": 6, "name": "우유1L", "price": 2000, "count": 1},
+					{"id": 7, "name": "퐁퐁", "price": 3500, "count": 1},
+					{"id": 8, "name": "식빵", "price": 2500, "count": 1}
+				]
+			}
+		];
+		res.json(order);
+	})
+	.post(function(req, res, next) {
 	console.log(req.headers['content-type']);
 	console.log(req.body);
 	var name = req.body.name;

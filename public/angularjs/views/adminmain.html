@@ -1,3 +1,12 @@
-<div class="well">
-    관리자 메인 뷰입니다.
+<div class="panel panel-default row" ng-controller="adminMainController">
+    <div class="col-xs-3 panel-body"> <!-- menu -->
+        <a ng-repeat="screen in screens" class="btn btn-block btn-default"
+           ng-class="{ 'btn-primary': screen === currentScreen }"
+           ng-click="setScreen($index)">
+            {{screen}}
+        </a>
+    </div>
+    <div class="col-xs-8 panel-body">
+        <div ng-include="getScreen()"></div>
+    </div>
 </div>
